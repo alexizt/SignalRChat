@@ -6,6 +6,7 @@ using System.Threading;
 using System.Web;
 using System.Web.Hosting;
 using Humanizer;
+using System.Globalization;
 
 namespace SignalRChat
 {
@@ -33,7 +34,7 @@ namespace SignalRChat
         {
             TimeSpan uptime = DateTime.Now - _internetBirthDate;
 
-            _uptimeHub.Clients.All.internetUpTime(uptime.Humanize(5));
+            _uptimeHub.Clients.All.internetUpTime(uptime.Humanize(precision: 5, culture: new CultureInfo("es-AR")));
         }
 
         public void Stop(bool immediate)
